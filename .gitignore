@@ -1,0 +1,34 @@
+# for windows
+
+Thumbs.db
+
+# for VC6
+
+Debug
+Release
+*.ncb
+*.opt
+*.plg
+*.aps
+
+# for VC2010
+
+*.opensdf
+*.suo
+*.sdf
+*.vcxproj.user
+*.vsp
+ipch
+
+# for Qt 5
+
+*.pro.user
+build-*
+*.pro.user.*
+
+# for build vs2012
+
+bin
+tmp
+
+# for build vs2013
