@@ -1,5 +1,6 @@
 #include <QDebug>
 #include <QTcpSocket>
+#include <QTime>
 
 QByteArray formatMsg(QByteArray msg, unsigned short idMsg){
 
@@ -106,9 +107,12 @@ unsigned short clearMsg(QByteArray msg, QByteArray &value){
 int main()
 {
     const int Timeout = 5 * 1000;
+    QTime readtime;
 
     QTcpSocket socketClient;
     socketClient.connectToHost("192.168.40.128", 7000);
+    readtime.start();
+
     if (!socketClient.waitForConnected(Timeout)) {
         qDebug() << "Timeout connection!";
         return -1;
@@ -133,6 +137,7 @@ int main()
     QByteArray value;
     unsigned short idMsg = clearMsg(returnMsg,value);
     qDebug()<<"Value:"<<value;
+    qDebug()<<"Read Time:"<<readtime.elapsed()<<"ms";
 
     socketClient.close();
 
