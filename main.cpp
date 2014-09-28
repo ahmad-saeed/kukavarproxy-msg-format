@@ -21,6 +21,7 @@ QByteArray formatMsg(QByteArray msg, unsigned short idMsg){
     hByte=(lunghezza & 0xff00) >> 8;
     lByte=(lunghezza & 0x00ff);
 
+    // Message ID ( MAX: 0xFFFF )
     hByteMsg=(idMsg & 0xff00) >> 8;
     lByteMsg=(idMsg & 0x00ff);
 
@@ -74,7 +75,7 @@ unsigned short clearMsg(QByteArray msg, QByteArray &value){
     short lenMsg,func,lenValue;
     unsigned short idReadMsg;
 
-    if(msg.length() > 0){
+    if(msg.size() > 0){
         //Message ID
         idReadMsg=((unsigned char)msg[0])<<8 | ((unsigned char)msg[1]);
         qDebug() << "Message ID: " << idReadMsg;
@@ -83,7 +84,7 @@ unsigned short clearMsg(QByteArray msg, QByteArray &value){
         lenMsg=((unsigned char)msg[2])<<8 | ((unsigned char)msg[3]);
         qDebug() << "Message Length:" << lenMsg;
 
-        //Function(read/Write)
+        //Function(read:0/Write:1)
         func=((int)msg[4]);
         qDebug() << "Function(read:0/Write:1) " << func;
 
@@ -118,7 +119,7 @@ int main()
         return -1;
     }
 
-    socketClient.write(formatMsg("$OV_PRO",0));
+    socketClient.write(formatMsg("$OV_PRO",43981));
     if(!socketClient.waitForBytesWritten(Timeout))
     {
         qDebug() << "Timeout message sent!";
