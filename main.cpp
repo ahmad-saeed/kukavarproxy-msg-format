@@ -140,7 +140,7 @@ int main()
     qDebug()<<"Value:"<<value;
     qDebug()<<"Read Time:"<<readtime.elapsed()<<"ms";
 
-    socketClient.close();
+    socketClient.disconnectFromHost();
 
     return 0;
 }
