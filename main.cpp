@@ -119,7 +119,12 @@ int main()
         return -1;
     }
 
+    //read variable
     socketClient.write(formatMsg("$OV_PRO",43981));
+
+    //write varibel
+    //socketClient.write(formatMsg("$OV_PRO","55",43981));
+
     if(!socketClient.waitForBytesWritten(Timeout))
     {
         qDebug() << "Timeout message sent!";
