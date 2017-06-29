@@ -6,13 +6,13 @@ kukavarproxy is an TCP/IP interface to Kuka robots that allows for reading and w
 ## 2. How it works
 The kukavarproxy is a TCP/IP server that listens for network messages on the TCP port 7000, the reads and writes data to the KRC system variables.
 kukavarproxy message format is 
-        * msg ID in HEX                       2 bytes
-        * msg length in HEX                   2 bytes
-        * read (0) or write (1)               1 byte
-        * variable name length in HEX         2 bytes
-        * variable name in ASCII              # bytes
-        * variable value length in HEX        2 bytes
-        * variable value in ASCII             # bytes
+* msg ID in HEX                       2 bytes
+* msg length in HEX                   2 bytes
+* read (0) or write (1)               1 byte
+* variable name length in HEX         2 bytes
+* variable name in ASCII              # bytes
+* variable value length in HEX        2 bytes
+* variable value in ASCII             # bytes
 		
 ## 3. Usage
 The KRC robot controller runs the Microsoft Windows operating system. The teach pendant shows an “HMI” which is a program that KUKA developed to run on Windows and it is the interface that the robot user has to manipulate the robot through.
